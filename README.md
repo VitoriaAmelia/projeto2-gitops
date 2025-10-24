@@ -66,7 +66,125 @@ Dê um nome (ex: `gitops-projeto`) e mantenha **público**
 <img width="847" height="580" alt="Image" src="https://github.com/user-attachments/assets/02798c40-dae3-4cd3-a64c-8d89e37b06e1" />
 
 
-Estrutura desejada do repositório:  
+---
 
+### Configurando o repositório local
 
-<img width="371" height="68" alt="Image" src="https://github.com/user-attachments/assets/672c7c13-1863-40a8-9b54-10992f930062" />
+Se ainda não estiver autenticado no GitHub localmente:
+
+```bash
+git config --global user.name "seu-nome-aqui"
+git config --global user.email "seu-email-aqui@gmail.com"
+```
+
+Em seguida:
+
+```bash
+cd ~/Documents
+git clone https://github.com/<seu-usuario>/projetinho-teste.git
+cd projetinho-teste
+mkdir k8s
+code .
+```
+
+No **VS Code**, crie o arquivo:
+
+```
+k8s/online-boutique.yaml
+```
+
+Cole o conteúdo econtrado no link:  
+👉 [https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml](https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml)
+
+Depois, volte ao terminal e execute:
+
+```bash
+git add .
+git commit -m "Adiciona manifesto do Online Boutique"
+git push origin main
+```
+
+---
+
+## 3️⃣ Instalar o ArgoCD no Cluster Local
+
+No **PowerShell**, execute:
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+Verifique se os pods estão rodando:
+
+```bash
+kubectl get pods -n argocd
+```
+
+---
+
+## 4️⃣ Acessar o ArgoCD Localmente
+
+Deixe esta janela aberta (pode ser em segundo plano):
+
+```bash
+kubectl -n argocd port-forward svc/argocd-server 8080:443
+```
+
+Abra **outro PowerShell** para continuar.
+
+Pegue as credenciais do ArgoCD:
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
+```
+
+Decodifique a senha retornada:
+
+```bash
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("Resposta_recebida_do_comando_anterior"))
+```
+
+A senha será a saída do último comando.
+
+Abra no navegador:  
+🔗 [https://localhost:8080](https://localhost:8080)
+
+Login:
+- Usuário: **admin**
+- Senha: *(obtida acima)*
+
+---
+
+### Criando o aplicativo no ArgoCD
+
+Na interface, clique em **"New App"** e preencha os seguintes campos:
+
+| Campo | Valor |
+|-------|--------|
+| **Application Name** | Projeto-Gitops |
+| **Project** | default |
+| **Sync Policy** | Automatic |
+| **Opções** | Prune Resources, Self Heal, Set Deletion Finalizer, Auto-Create Namespace |
+| **Repository URL** | URL do seu repositório GitHub |
+| **Revision** | main |
+| **Path** | k8s |
+| **Cluster URL** | https://kubernetes.default.svc |
+| **Namespace** | default |
+
+📸 *mostrar resultado final em imagem de exemplo aqui*
+
+---
+
+## 5️⃣ Acessar o Frontend
+
+Para expor o serviço frontend:
+
+```bash
+kubectl port-forward svc/frontend 8081:80
+```
+
+Agora, acesse no navegador:  
+👉 [http://localhost:8081](http://localhost:8081)
+
+Seu tudo ocorreu bem, aqui será possível visualizar o app
