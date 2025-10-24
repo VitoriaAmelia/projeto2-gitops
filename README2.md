@@ -260,7 +260,7 @@ Saída esperada:
 
 ---
 
-## 6️⃣ Conectando Repositório Privado ao ArgoCD
+## 6️⃣ Conectando Repositório Privado ao ArgoCD (opcional)
 
 ### 1. Tornar o repositório utilizado nos últimos passos, que era público, privado.
 
@@ -273,27 +273,28 @@ Para isso, vá em Settings --> Danger Zone ---> Change visibility
 
 <img width="873" height="183" alt="img2" src="https://github.com/user-attachments/assets/413a1619-f5f6-456f-b45d-1d0e220412c8" />
 
----
+ㅤ
 
 ### 2. Criar um Token
 
-
+ㅤ
 Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token
 
-
+ㅤ
 <img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/df154687-ea48-4e19-9926-674ab3ca4ce7" />
 
 
 ---
 
 ### 3. Conectar Repositório Privado ao ArgoCD
-
+ㅤ
 
 Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
 
 
 <img width="1342" height="324" alt="img3" src="https://github.com/user-attachments/assets/bcc60635-8fcd-4a1c-8e24-ea09ed434f81" />
 
+ㅤ
 
 <img width="1341" height="250" alt="img4" src="https://github.com/user-attachments/assets/04642d17-6a32-4747-b5b1-4cdcdfba3a45" />
 
@@ -307,11 +308,14 @@ Preencha conforme abaixo:
 | Username | seu usuário GitHub |
 | Password | token (PAT) |
 
+ㅤ
 
 <img width="1029" height="597" alt="img5" src="https://github.com/user-attachments/assets/a91b9dbd-ef80-498d-b286-f707e1ba6181" />
+ㅤ
 
 
 <img width="963" height="321" alt="img6" src="https://github.com/user-attachments/assets/12b5dea0-9002-4f99-af4f-58a5b16f7b4d" />
+ㅤ
 
 
 <img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
