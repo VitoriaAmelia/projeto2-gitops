@@ -12,6 +12,18 @@
   - Acessar o frontend da aplicação através do comando kubectl port-forward, validando o funcionamento da interface web
 ---
 
+## 🛠 Tecnologias Utilizadas
+
+  - Kubernetes
+  - Rancher Desktop
+  - ArgoCD
+  - Git e GitHub
+  - kubectl
+  - containerd
+  - YAML
+  
+---
+
 ## 🧩 Pré-requisitos
 
 Antes de começar, instale e configure:
@@ -30,17 +42,6 @@ Antes de começar, instale e configure:
 
 ---
 
-## 🛠 Tecnologias Utilizadas
-
-  - Kubernetes
-  - Rancher Desktop
-  - ArgoCD
-  - Git e GitHub
-  - kubectl
-  - containerd
-  - YAML
-  
----
 
 ## 📚 Navegação
    - Rancher Desktop
