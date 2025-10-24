@@ -1,5 +1,3 @@
-<img width="1054" height="624" alt="IMG7" src="https://github.com/user-attachments/assets/095dd20c-a2d0-4319-8729-c225d8e7cf92" /><img width="850" height="172" alt="img4(pods-running)" src="https://github.com/user-attachments/assets/1c351ee8-c8ee-4838-8239-e5c9547dbec2" /># 🚀 Projeto GitOps - Online Boutique
-
 ## 🧩 Pré-requisitos
 
 Antes de começar, instale e configure:
