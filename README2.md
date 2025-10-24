@@ -17,6 +17,17 @@ Antes de começar, instale e configure:
   - Realizar as configurações conforme descrito nas etapas 
 
 ---
+## 🛠 Tecnologias Utilizadas
+
+  - Kubernetes
+  - Rancher Desktop
+  - ArgoCD
+  - Git e GitHub
+  - kubectl
+  - containerd
+  - YAML
+  
+---
 
 ## 📚 Navegação
    - Rancher Desktop
