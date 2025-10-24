@@ -18,23 +18,32 @@ Antes de começar, instale e configure:
 
 ### ⚙️ Configurações necessárias
 
+
 - Vá em **Preferences → Kubernetes** e verifique se está **enabled**
+
 
 <img width="644" height="486" alt="img1" src="https://github.com/user-attachments/assets/0068d4c4-0450-4307-b19f-d6930197c836" />
 
+
 - Vá em **Preferences → Container Engine** e selecione **containerd**
+
 
 <img width="645" height="487" alt="img2" src="https://github.com/user-attachments/assets/62f546c7-16b6-469f-bd89-0adc189838a6" />
 
+
 Essas configurações garantem que o Kubernetes esteja ativo e que o Rancher Desktop use o container runtime compatível com o ArgoCD.
 
+
 Verifique o contexto ativo do Kubernetes:
+
 
 ```bash
 kubectl config get-contexts
 ```
 
+
 Saída esperada:
+
 
 <img width="737" height="83" alt="Image" src="https://github.com/user-attachments/assets/e06a0517-9395-4466-b019-a5633c9a6800" />
 
@@ -44,17 +53,24 @@ Saída esperada:
 
 ### 🍴 Fork do Repositório Base
 
+
 O fork é uma cópia independente de outro repositório, criada na sua conta GitHub.  
+
 
 👉 https://github.com/GoogleCloudPlatform/microservices-demo
 
+
 <img width="1232" height="407" alt="img3" src="https://github.com/user-attachments/assets/c0ebaccd-7cac-4cb0-8be3-44e1e8c04537" />
+
 
 Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o arquivo YAML.
 
+
 ### 🧱 Criação do seu Repositório GitOps
 
+
 Crie um **novo repositório público** na sua conta GitHub. Esse repositório armazenará o arquivo utilizado pelo ArgoCD.
+
 
 <img width="935" height="248" alt="img4" src="https://github.com/user-attachments/assets/1db9cd2d-b104-41de-83d9-76513191c209" />
 
@@ -64,12 +80,15 @@ Crie um **novo repositório público** na sua conta GitHub. Esse repositório ar
 
 Configure o Git se necessário:
 
+
 ```bash
 git config --global user.name "seu-nome-aqui"
 git config --global user.email "seu-email-aqui@gmail.com"
 ```
 
+
 Clone seu repositório e adicione o manifesto:
+
 
 ```bash
 cd ~/Documents
@@ -80,11 +99,15 @@ cd k8s
 code online-boutique.yaml
 ```
 
+
 Cole o conteúdo do YAML do fork (ou baixe e adicione na pasta k8s):
+
 
 <img width="1075" height="657" alt="Image" src="https://github.com/user-attachments/assets/45a3c74c-75b6-495e-a7df-694263ae02f3" />
 
+
 Faça commit e envie:
+
 
 ```bash
 git add .
@@ -92,28 +115,36 @@ git commit -m "Adiciona manifesto do Online Boutique"
 git push origin main
 ```
 
+
 Sua estrutura deve ser:
+
 
 <img width="342" height="249" alt="img3" src="https://github.com/user-attachments/assets/6b76caf5-d88d-415d-94ae-f88cb06c945f" />
 
 ---
 
+
 ## 3️⃣ Instalar o ArgoCD no Cluster Local
 
 Crie o namespace e siga os passos para instalação:
+
 
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
+
 Verifique se os pods estão rodando corretamente:
+
 
 ```bash
 kubectl get pods -n argocd
 ```
 
+
 Saída esperada:
+
 
 <img width="850" height="172" alt="img4(pods-running)" src="https://github.com/user-attachments/assets/37675f4c-cf6d-4155-8a9c-a5c3158e1f16" />
 
@@ -121,30 +152,43 @@ Saída esperada:
 
 ## 4️⃣ Acesso ao ArgoCD
 
+
 Deixe este terminal aberto para encaminhar a porta:
+
 
 ```bash
 kubectl -n argocd port-forward svc/argocd-server 8080:443
 ```
 
+
 <img width="706" height="143" alt="img5" src="https://github.com/user-attachments/assets/80c73e68-6342-4699-b142-e99353e0e4a3" />
 
+
 Abra outro terminal e adquira a senha de acesso:
+
 
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
 ```
 
+
 Decodifique a senha usando a saída do último comando (necessário para PowerShell):
+
 
 ```bash
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("saída_do_último_comando_aqui"))
 ```
 
+
 <img width="718" height="135" alt="img6" src="https://github.com/user-attachments/assets/3c54e6d1-819a-4144-9acd-31d1d1897064" />
 
+
 Agora, acesse: https://localhost:8080  
-Login: `admin`  
+
+
+Login: `admin`
+
+
 Senha: a que foi adquirida acima
 
 ---
@@ -152,6 +196,8 @@ Senha: a que foi adquirida acima
 ### 🛠 Criando o Aplicativo no ArgoCD
 
 Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
+
+
 
 | Campo | Valor |
 |-------|--------|
@@ -182,6 +228,7 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 
 2. Faça o commit da alteração e aguarde a sincronização automática.
 
+
 <img width="558" height="414" alt="img9-substitta" src="https://github.com/user-attachments/assets/d9676815-c9ea-49f7-800d-a45099f04939" />
 
 ---
@@ -190,13 +237,17 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 
 No Powershell, configure o port-forward para acesso ao frontend:
 
+
 ```bash
 kubectl port-forward svc/frontend 8081:80
 ```
 
+
 <img width="541" height="139" alt="img10" src="https://github.com/user-attachments/assets/7ea97389-3bbc-4aa1-995b-0c8dc01308e8" />
 
+
 Acesse: http://localhost:8081
+
 
 <img width="1364" height="683" alt="img11" src="https://github.com/user-attachments/assets/8f3133fd-7fed-48c2-b9a6-329aee726d27" />
 
@@ -219,6 +270,7 @@ Para isso, vá em Settings --> Danger Zone ---> Change visibility
 
 ### 2️⃣ Criar um Token
 
+
 Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token
 
 
@@ -228,6 +280,7 @@ Para isso, vá em Settings → Developer settings → Personal access tokens →
 ---
 
 ### 3️⃣ Conectar Repositório Privado ao ArgoCD
+
 
 Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
 
@@ -239,6 +292,7 @@ Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**
 
 
 Preencha conforme abaixo:
+
 
 | Campo | Valor |
 |-------|-------|
