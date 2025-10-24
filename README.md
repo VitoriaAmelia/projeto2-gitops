@@ -43,17 +43,17 @@ kubectl config get-contexts
 Crie um **fork** do repositório oficial do projeto:  
 👉 [https://github.com/GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo)
 
-<img width="1326" height="574" alt="Image" src="https://github.com/user-attachments/assets/f5f69c8f-2272-42c0-9898-21eb43b4bad3" />
+<img width="663" height="287" alt="Image" src="https://github.com/user-attachments/assets/f5f69c8f-2272-42c0-9898-21eb43b4bad3" />
 
 ### Criação do repositório próprio
 
 Crie um **novo repositório** na sua conta GitHub:  
 
-<img width="946" height="527" alt="Image" src="https://github.com/user-attachments/assets/98fa7cd8-16db-42e7-8699-00450bed4727" />
+<img width="473" height="263" alt="Image" src="https://github.com/user-attachments/assets/98fa7cd8-16db-42e7-8699-00450bed4727" />
 
 Dê um nome (ex: `projetinho-teste`) e mantenha **público**  
 
-<img width="847" height="580" alt="Image" src="https://github.com/user-attachments/assets/02798c40-dae3-4cd3-a64c-8d89e37b06e1" />
+<img width="423" height="290" alt="Image" src="https://github.com/user-attachments/assets/02798c40-dae3-4cd3-a64c-8d89e37b06e1" />
 
 Estrutura desejada do repositório:  
 
