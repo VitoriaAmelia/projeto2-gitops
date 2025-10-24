@@ -20,11 +20,11 @@ Antes de começar, instale e configure:
 
 - Vá em **Preferences → Kubernetes** e verifique se está **enabled**
 
-<img width="1365" height="716" alt="Image" src="https://github.com/user-attachments/assets/38777acd-87e1-47ab-b235-172bc9a6a04c" />
+<img width="1074" height="716" alt="img1" src="https://github.com/user-attachments/assets/0068d4c4-0450-4307-b19f-d6930197c836" />
 
 - Vá em **Preferences → Container Engine** e selecione **containerd**
 
-<img width="1365" height="717" alt="Image" src="https://github.com/user-attachments/assets/cafbd489-6021-4ecc-8433-a0664540b65a" />
+<img width="1076" height="717" alt="img2" src="https://github.com/user-attachments/assets/62f546c7-16b6-469f-bd89-0adc189838a6" />
 
 Essas configurações garantem que o Kubernetes esteja ativo e que o Rancher Desktop use o container runtime compatível com o ArgoCD.
 
@@ -49,7 +49,7 @@ Você o utilizará para ter acesso total aos arquivos e poder modificá-los sem 
 
 👉 https://github.com/GoogleCloudPlatform/microservices-demo
 
-<img width="1326" height="574" alt="Image" src="https://github.com/user-attachments/assets/f5f69c8f-2272-42c0-9898-21eb43b4bad3" />
+<img width="1232" height="307" alt="img3" src="https://github.com/user-attachments/assets/c0ebaccd-7cac-4cb0-8be3-44e1e8c04537" />
 
 Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o manifesto.
 
@@ -57,7 +57,7 @@ Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua bas
 
 Crie um **novo repositório público** na sua conta GitHub. Esse repositório armazenará apenas os manifestos que o ArgoCD sincronizará com o cluster local.
 
-<img width="946" height="527" alt="Image" src="https://github.com/user-attachments/assets/98fa7cd8-16db-42e7-8699-00450bed4727" />
+<img width="935" height="148" alt="img4" src="https://github.com/user-attachments/assets/1db9cd2d-b104-41de-83d9-76513191c209" />
 
 ---
 
@@ -78,24 +78,18 @@ git clone https://github.com/VitoriaAmelia/appgitops-projeto2
 cd appgitops-projeto2
 ```
 
-Crie a estrutura de pastas e prepare o manifesto Kubernetes:
+Crie a estrutura de pastas e arquivos:
 
 ```bash
+cd ~/Documents
+git clone https://github.com/VitoriaAmelia/appgitops-projeto2
+cd appgitops-projeto2
 mkdir k8s
 cd k8s
-```
-
-Agora, baixe o arquivo `kubernetes-manifests.yaml` do seu fork e salve-o como `online-boutique.yaml`:
-
-```bash
-curl -L -o online-boutique.yaml https://raw.githubusercontent.com/VitoriaAmelia/microservices-demo/main/release/kubernetes-manifests.yaml
-```
-
-Abra o arquivo no Visual Studio Code (ou editor de sua preferência) para verificar o conteúdo:
-
-```bash
 code online-boutique.yaml
 ```
+
+Cole o conteúdo do YAML do fork no arquivo que será aberto no editor de código (ou baixe e adicione na pasta k8s):
 
 <img width="1075" height="657" alt="Image" src="https://github.com/user-attachments/assets/45a3c74c-75b6-495e-a7df-694263ae02f3" />
 
@@ -107,13 +101,15 @@ git commit -m "Adiciona manifesto do Online Boutique"
 git push origin main
 ```
 
+Sua estrutura deve ser:
+
 <img width="342" height="249" alt="img3" src="https://github.com/user-attachments/assets/6b76caf5-d88d-415d-94ae-f88cb06c945f" />
 
 ---
 
 ## 3️⃣ Instalar o ArgoCD no Cluster Local
 
-Crie o namespace e aplique o manifesto de instalação oficial:
+Crie o namespace e siga os passos para instalação:
 
 ```bash
 kubectl create namespace argocd
@@ -125,6 +121,8 @@ Verifique se os pods estão rodando corretamente:
 ```bash
 kubectl get pods -n argocd
 ```
+
+Saída esperada:
 
 <img width="850" height="172" alt="img4(pods-running)" src="https://github.com/user-attachments/assets/37675f4c-cf6d-4155-8a9c-a5c3158e1f16" />
 
@@ -140,23 +138,23 @@ kubectl -n argocd port-forward svc/argocd-server 8080:443
 
 <img width="706" height="143" alt="img5" src="https://github.com/user-attachments/assets/80c73e68-6342-4699-b142-e99353e0e4a3" />
 
-Abra outro terminal e recupere a senha de administrador:
+Abra outro terminal e adquira a senha de acesso:
 
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
 ```
 
-Decodifique a senha retornada:
+Decodifique a senha usando a saída do último comando:
 
 ```bash
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("senha_codificada_aqui"))
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("saída_do_último_comando_aqui"))
 ```
 
 <img width="718" height="135" alt="img6" src="https://github.com/user-attachments/assets/3c54e6d1-819a-4144-9acd-31d1d1897064" />
 
 Agora, acesse: https://localhost:8080  
 Login: `admin`  
-Senha: *(a que você decodificou acima)*
+Senha: a que foi adquirida acima
 
 ---
 
