@@ -36,7 +36,7 @@ Antes de começar, instale e configure:
    - Acessar o Frontend
    
    - Conectando Repositório Privado ao ArgoCD (opcional)   
---
+---
 
 
 ## 1️⃣ Rancher Desktop
