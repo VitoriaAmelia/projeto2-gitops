@@ -20,11 +20,11 @@ Antes de começar, instale e configure:
 
 - Vá em **Preferences → Kubernetes** e verifique se está **enabled**
 
-<img width="1074" height="716" alt="img1" src="https://github.com/user-attachments/assets/0068d4c4-0450-4307-b19f-d6930197c836" />
+<img width="1064" height="706" alt="img1" src="https://github.com/user-attachments/assets/0068d4c4-0450-4307-b19f-d6930197c836" />
 
 - Vá em **Preferences → Container Engine** e selecione **containerd**
 
-<img width="1076" height="717" alt="img2" src="https://github.com/user-attachments/assets/62f546c7-16b6-469f-bd89-0adc189838a6" />
+<img width="1066" height="707" alt="img2" src="https://github.com/user-attachments/assets/62f546c7-16b6-469f-bd89-0adc189838a6" />
 
 Essas configurações garantem que o Kubernetes esteja ativo e que o Rancher Desktop use o container runtime compatível com o ArgoCD.
 
