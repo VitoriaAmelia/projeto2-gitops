@@ -167,7 +167,23 @@ Na interface, clique em **"New App"** e preencha os seguintes campos:
 | **Cluster URL** | https://kubernetes.default.svc |
 | **Namespace** | default |
 
-📸 *mostrar resultado final em imagem de exemplo aqui*
+mostrar telas da configuração
+
+mostrar tela de sinc
+
+Para que seu estado fique healthy:
+
+1 - localize LoadBalancer no código Yaml da Online Boutique
+
+img do localizador
+
+2 - mude para NodePort e salve
+
+img de mudado
+
+3 - Verifique a mudança:
+
+img healthy
 
 ---
 
