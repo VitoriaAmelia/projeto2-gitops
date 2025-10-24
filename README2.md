@@ -287,7 +287,7 @@ Para isso, vá em Settings → Developer settings → Personal access tokens →
 ---
 
 ### 3. Conectar Repositório Privado ao ArgoCD
-ㅤ
+
 
 Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
 
@@ -297,6 +297,7 @@ Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**
 ㅤ
 
 <img width="1341" height="250" alt="img4" src="https://github.com/user-attachments/assets/04642d17-6a32-4747-b5b1-4cdcdfba3a45" />
+ㅤ
 
 
 Preencha conforme abaixo:
