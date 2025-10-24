@@ -144,22 +144,26 @@ Configurar conforme tabela:
 
 | Campo | Valor |
 |-------|--------|
-| Application Name | Projeto-Gitops |
+| Application Name | onlineboutique |
 | Project | default |
 | Sync Policy | Automatic |
 | Opções | Prune, Self Heal, Auto-Finalizer, Auto-Create Namespace |
-| Repository URL | Seu repositório GitHub |
+| Repository URL | Sua URL do repositório GitHub |
 | Revision | main |
 | Path | k8s |
 | Cluster URL | https://kubernetes.default.svc |
 | Namespace | default |
 
-<img width="1056" height="633" alt="img7-substituta" src="https://github.com/user-attachments/assets/7f6e40ec-d8ea-4083-85cc-e4702fdd8e7d" />
-<img width="1064" height="630" alt="img8" src="https://github.com/user-attachments/assets/18188a25-9154-4e79-9a84-408f460de67b" />
+
+<img width="843" height="632" alt="img5" src="https://github.com/user-attachments/assets/1fcc141a-fcfa-40cc-80c4-c068b1e32eaa" />
+
+
+<img width="945" height="630" alt="img6" src="https://github.com/user-attachments/assets/64a976a6-9149-4742-bd9b-1a0f0ecc4de8" />
+
 
 #### Ajustando Health
 
-1. Edite o serviço LoadBalancer → NodePort
+1. Procure LoadBalancer no arquivo YAML e substitua por NodePort pois o projeto é somente local e não utiliza LoadBalancer.
 
 <img width="741" height="306" alt="img9 1" src="https://github.com/user-attachments/assets/b96bc1da-9b35-4b4f-bde5-488b460407f2" />
 
@@ -170,6 +174,9 @@ Configurar conforme tabela:
 ---
 
 ## 5️⃣ Acessar o Frontend
+
+No Powershell, configure o port-forward para acesso ao frontend:
+
 
 ```bash
 kubectl port-forward svc/frontend 8081:80
@@ -185,7 +192,7 @@ Acesse: http://localhost:8081
 
 ## 🔐 Conectando Repositório Privado ao ArgoCD
 
-### 1️⃣ Tornar privado
+### 1️⃣ Tornar o repositório utilizado nos últimos passos, que era público, privado.
 
 <img width="1333" height="205" alt="img1" src="https://github.com/user-attachments/assets/19a923b7-01b8-4c7e-a21b-54455ab1cfd0" />
 <img width="873" height="183" alt="img2" src="https://github.com/user-attachments/assets/413a1619-f5f6-456f-b45d-1d0e220412c8" />
@@ -207,12 +214,21 @@ Configurar:
 
 | Campo | Valor |
 |-------|-------|
+| Connection method | HTTP / HTTPS |
 | Repository URL | https://github.com/seu-usuario/gitops-projeto.git |
-| Username | usuário GitHub |
-| Password | token (PAT) |
+| Username | seu usuário GitHub |
+| Password | token adquirido nas etapas anteriores|
+
+Visualize nas imagens abaixo:
 
 <img width="1029" height="597" alt="img5" src="https://github.com/user-attachments/assets/a91b9dbd-ef80-498d-b286-f707e1ba6181" />
+
+
 <img width="963" height="321" alt="img6" src="https://github.com/user-attachments/assets/12b5dea0-9002-4f99-af4f-58a5b16f7b4d" />
+
+Clique em Connect e verifique o status de conexão:
+
+
 <img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
 
 ---
