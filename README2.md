@@ -152,7 +152,7 @@ Sua estrutura deve ser:
 ---
 
 
-## 3️⃣ Instalar o ArgoCD no Cluster Local
+## 3️⃣ Instalar o ArgoCD
 
 Crie o namespace e siga os passos para instalação:
 
