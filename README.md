@@ -68,7 +68,7 @@ Dê um nome (ex: `gitops-projeto`) e mantenha **público**
 
 ---
 
-### Configurando o repositório local
+### Configurando o repositório local no Power Shell
 
 Se ainda não estiver autenticado no GitHub localmente:
 
@@ -81,19 +81,14 @@ Em seguida:
 
 ```bash
 cd ~/Documents
-git clone https://github.com/<seu-usuario>/projetinho-teste.git
-cd projetinho-teste
+git clone https://github.com/VitoriaAmelia/appgitops-projeto2
+cd appgitops-projeto2
 mkdir k8s
-code .
+cd k8s
+code online-boutique.yaml
 ```
 
-No **VS Code**, crie o arquivo:
-
-```
-k8s/online-boutique.yaml
-```
-
-Cole o conteúdo econtrado no link:  
+Depois que o VsCode abrir, cole o conteúdo econtrado no link e salve:  
 👉 [https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml](https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml)
 
 Depois, volte ao terminal e execute:
