@@ -45,17 +45,16 @@ Saída esperada:
 ### 🍴 Fork do Repositório Base
 
 O fork é uma cópia independente de outro repositório, criada na sua conta GitHub.  
-Você o utilizará para ter acesso total aos arquivos e poder modificá-los sem alterar o original.
 
 👉 https://github.com/GoogleCloudPlatform/microservices-demo
 
 <img width="1232" height="407" alt="img3" src="https://github.com/user-attachments/assets/c0ebaccd-7cac-4cb0-8be3-44e1e8c04537" />
 
-Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o manifesto.
+Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o arquivo YAML.
 
 ### 🧱 Criação do seu Repositório GitOps
 
-Crie um **novo repositório público** na sua conta GitHub. Esse repositório armazenará apenas os manifestos que o ArgoCD sincronizará com o cluster local.
+Crie um **novo repositório público** na sua conta GitHub. Esse repositório armazenará o arquivo utilizado pelo ArgoCD.
 
 <img width="935" height="248" alt="img4" src="https://github.com/user-attachments/assets/1db9cd2d-b104-41de-83d9-76513191c209" />
 
@@ -63,22 +62,14 @@ Crie um **novo repositório público** na sua conta GitHub. Esse repositório ar
 
 ### 🖥 Configurar Repositório Local
 
-Configure o Git (apenas na primeira vez):
+Configure o Git se necessário:
 
 ```bash
 git config --global user.name "seu-nome-aqui"
 git config --global user.email "seu-email-aqui@gmail.com"
 ```
 
-Clone o repositório que você criou:
-
-```bash
-cd ~/Documents
-git clone https://github.com/VitoriaAmelia/appgitops-projeto2
-cd appgitops-projeto2
-```
-
-Crie a estrutura de pastas e arquivos:
+Clone seu repositório e adicione o manifesto:
 
 ```bash
 cd ~/Documents
@@ -89,11 +80,11 @@ cd k8s
 code online-boutique.yaml
 ```
 
-Cole o conteúdo do YAML do fork no arquivo que será aberto no editor de código (ou baixe e adicione na pasta k8s):
+Cole o conteúdo do YAML do fork (ou baixe e adicione na pasta k8s):
 
 <img width="1075" height="657" alt="Image" src="https://github.com/user-attachments/assets/45a3c74c-75b6-495e-a7df-694263ae02f3" />
 
-Depois, volte ao terminal e faça commit e push:
+Faça commit e envie:
 
 ```bash
 git add .
@@ -144,7 +135,7 @@ Abra outro terminal e adquira a senha de acesso:
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
 ```
 
-Decodifique a senha usando a saída do último comando:
+Decodifique a senha usando a saída do último comando (necessário para PowerShell):
 
 ```bash
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("saída_do_último_comando_aqui"))
@@ -164,24 +155,30 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 
 | Campo | Valor |
 |-------|--------|
-| Application Name | Projeto-Gitops |
+| Application Name | onlineboutique |
 | Project | default |
 | Sync Policy | Automatic |
 | Opções | Prune, Self Heal, Auto-Finalizer, Auto-Create Namespace |
-| Repository URL | https://github.com/VitoriaAmelia/appgitops-projeto2 |
+| Repository URL | Sua URL do repositório GitHub |
 | Revision | main |
 | Path | k8s |
 | Cluster URL | https://kubernetes.default.svc |
 | Namespace | default |
 
-<img width="1056" height="633" alt="img7-substituta" src="https://github.com/user-attachments/assets/7f6e40ec-d8ea-4083-85cc-e4702fdd8e7d" />
-<img width="1064" height="630" alt="img8" src="https://github.com/user-attachments/assets/18188a25-9154-4e79-9a84-408f460de67b" />
+
+<img width="843" height="632" alt="img5" src="https://github.com/user-attachments/assets/1fcc141a-fcfa-40cc-80c4-c068b1e32eaa" />
+
+
+<img width="945" height="630" alt="img6" src="https://github.com/user-attachments/assets/64a976a6-9149-4742-bd9b-1a0f0ecc4de8" />
+
 
 #### Ajustando o Estado Health
 
-1. Edite o serviço `frontend` no YAML, mudando de **LoadBalancer** para **NodePort**.
+1. Edite o serviço `frontend` no YAML, mudando de **LoadBalancer** para **NodePort** pois o projeto é somente local e não utiliza LoadBalancer.
+   
 
 <img width="741" height="306" alt="img9 1" src="https://github.com/user-attachments/assets/b96bc1da-9b35-4b4f-bde5-488b460407f2" />
+
 
 2. Faça o commit da alteração e aguarde a sincronização automática.
 
@@ -191,7 +188,7 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 
 ## 5️⃣ Acessar o Frontend
 
-Encaminhe a porta do serviço `frontend` para acesso local:
+No Powershell, configure o port-forward para acesso ao frontend:
 
 ```bash
 kubectl port-forward svc/frontend 8081:80
@@ -207,16 +204,26 @@ Acesse: http://localhost:8081
 
 ## 🔐 Conectando Repositório Privado ao ArgoCD
 
-### 1️⃣ Tornar o Repositório Privado
+### 1️⃣ Tornar o repositório utilizado nos últimos passos, que era público, privado.
+
+
+Para isso, vá em Settings --> Danger Zone ---> Change visibility
+
 
 <img width="1333" height="205" alt="img1" src="https://github.com/user-attachments/assets/19a923b7-01b8-4c7e-a21b-54455ab1cfd0" />
+
+
 <img width="873" height="183" alt="img2" src="https://github.com/user-attachments/assets/413a1619-f5f6-456f-b45d-1d0e220412c8" />
 
 ---
 
-### 2️⃣ Criar um Personal Access Token (PAT)
+### 2️⃣ Criar um Token
+
+Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token
+
 
 <img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/df154687-ea48-4e19-9926-674ab3ca4ce7" />
+
 
 ---
 
@@ -224,8 +231,12 @@ Acesse: http://localhost:8081
 
 Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
 
+
 <img width="1342" height="324" alt="img3" src="https://github.com/user-attachments/assets/bcc60635-8fcd-4a1c-8e24-ea09ed434f81" />
+
+
 <img width="1341" height="250" alt="img4" src="https://github.com/user-attachments/assets/04642d17-6a32-4747-b5b1-4cdcdfba3a45" />
+
 
 Preencha conforme abaixo:
 
@@ -235,6 +246,11 @@ Preencha conforme abaixo:
 | Username | seu usuário GitHub |
 | Password | token (PAT) |
 
+
 <img width="1029" height="597" alt="img5" src="https://github.com/user-attachments/assets/a91b9dbd-ef80-498d-b286-f707e1ba6181" />
+
+
 <img width="963" height="321" alt="img6" src="https://github.com/user-attachments/assets/12b5dea0-9002-4f99-af4f-58a5b16f7b4d" />
+
+
 <img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
