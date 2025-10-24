@@ -199,3 +199,55 @@ Agora, acesse no navegador:
 👉 [http://localhost:8081](http://localhost:8081)
 
 Seu tudo ocorreu bem, aqui será possível visualizar o app
+
+
+---
+## 🔐 Conectando repositório privado ao Argo CD
+
+### Deixe o repositório privado
+Acesse:
+`GitHub → Settings → General → Danger Zone → Change repository visibility → Private`
+
+---
+
+### 2️⃣ Gere um Personal Access Token (PAT)
+
+Caminho:
+`GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token (classic)`
+
+Dê um nome para o token (exemplo: `argo-access`) e marque as permissões:
+
+✅ `repo` — acesso total a repositórios privados  
+✅ `read:packages` — leitura de pacotes (opcional)
+
+Depois clique em **Generate token**  
+Copie o token gerado (exemplo: `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) — guarde com segurança.
+
+---
+
+### 3️⃣ Configure o repositório no Argo CD
+
+1. Acesse o painel do **Argo CD**  
+2. Vá no menu lateral → **Settings ⚙️ → Repositories**
+3. Clique em **“+ CONNECT REPO”**
+4. Escolha **HTTPS**
+5. Preencha:
+
+| Campo | Valor |
+|-------|-------|
+| **Repository URL** | `https://github.com/seu-usuario/gitops-projeto.git` |
+| **Username** | seu nome de usuário do GitHub |
+| **Password** | o token gerado (PAT) |
+
+6. Clique em **CONNECT**
+
+---
+
+### 4️⃣ Sincronize
+Após conectar, o Argo CD vai detectar o repositório.  
+Se quiser forçar a sincronização, clique em **SYNC** no app.
+
+---
+
+> ⚠️ **Importante:** nunca compartilhe seu token (PAT) em texto público ou commit — ele dá acesso total aos seus repositórios privados.
+
