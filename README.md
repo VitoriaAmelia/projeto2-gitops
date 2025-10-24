@@ -1,4 +1,4 @@
-# 🚀 Projeto GitOps - Online Boutique
+<img width="1054" height="624" alt="IMG7" src="https://github.com/user-attachments/assets/095dd20c-a2d0-4319-8729-c225d8e7cf92" /><img width="850" height="172" alt="img4(pods-running)" src="https://github.com/user-attachments/assets/1c351ee8-c8ee-4838-8239-e5c9547dbec2" /># 🚀 Projeto GitOps - Online Boutique
 
 ## 🧩 Pré-requisitos
 
@@ -62,8 +62,7 @@ Crie um **novo repositório** na sua conta GitHub:
 
 Dê um nome (ex: `gitops-projeto`) e mantenha **público**  
 
-
-<img width="847" height="580" alt="Image" src="https://github.com/user-attachments/assets/02798c40-dae3-4cd3-a64c-8d89e37b06e1" />
+<img width="1333" height="618" alt="telacreatereositorio" src="https://github.com/user-attachments/assets/dfd24400-5310-487d-9a5b-7e51697f4b0f" />
 
 
 ---
@@ -91,6 +90,10 @@ code online-boutique.yaml
 Depois que o VsCode abrir, cole o conteúdo econtrado no link e salve:  
 👉 [https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml](https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml)
 
+
+<img width="1075" height="657" alt="Image" src="https://github.com/user-attachments/assets/45a3c74c-75b6-495e-a7df-694263ae02f3" />
+
+
 Depois, volte ao terminal e execute:
 
 ```bash
@@ -98,6 +101,9 @@ git add .
 git commit -m "Adiciona manifesto do Online Boutique"
 git push origin main
 ```
+
+<img width="342" height="249" alt="img3" src="https://github.com/user-attachments/assets/6b76caf5-d88d-415d-94ae-f88cb06c945f" />
+
 
 ---
 
@@ -116,6 +122,10 @@ Verifique se os pods estão rodando:
 kubectl get pods -n argocd
 ```
 
+<img width="850" height="172" alt="img4(pods-running)" src="https://github.com/user-attachments/assets/37675f4c-cf6d-4155-8a9c-a5c3158e1f16" />
+
+
+
 ---
 
 ## 4️⃣ Acessar o ArgoCD Localmente
@@ -125,6 +135,10 @@ Deixe esta janela aberta (pode ser em segundo plano):
 ```bash
 kubectl -n argocd port-forward svc/argocd-server 8080:443
 ```
+
+
+<img width="706" height="143" alt="img5" src="https://github.com/user-attachments/assets/80c73e68-6342-4699-b142-e99353e0e4a3" />
+
 
 Abra **outro PowerShell** para continuar.
 
@@ -141,6 +155,10 @@ Decodifique a senha retornada:
 ```
 
 A senha será a saída do último comando.
+
+
+<img width="718" height="135" alt="img6" src="https://github.com/user-attachments/assets/3c54e6d1-819a-4144-9acd-31d1d1897064" />
+
 
 Abra no navegador:  
 🔗 [https://localhost:8080](https://localhost:8080)
@@ -169,21 +187,29 @@ Na interface, clique em **"New App"** e preencha os seguintes campos:
 
 mostrar telas da configuração
 
-mostrar tela de sinc
+<img width="1056" height="633" alt="img7-substituta" src="https://github.com/user-attachments/assets/7f6e40ec-d8ea-4083-85cc-e4702fdd8e7d" />
+
+
+<img width="1064" height="630" alt="img8" src="https://github.com/user-attachments/assets/18188a25-9154-4e79-9a84-408f460de67b" />
+
 
 Para que seu estado fique healthy:
 
 1 - localize LoadBalancer no código Yaml da Online Boutique
 
-img do localizador
+
+<img width="741" height="306" alt="img9 1" src="https://github.com/user-attachments/assets/b96bc1da-9b35-4b4f-bde5-488b460407f2" />
+
 
 2 - mude para NodePort e salve
 
 img de mudado
 
-3 - Faça comit e verifique a mudança:
+3 - Faça comit, espere a sincronização e verifique a mudança:
 
-img healthy
+
+<img width="558" height="414" alt="img9-substitta" src="https://github.com/user-attachments/assets/d9676815-c9ea-49f7-800d-a45099f04939" />
+
 
 ---
 
@@ -195,10 +221,16 @@ Para expor o serviço frontend:
 kubectl port-forward svc/frontend 8081:80
 ```
 
+<img width="541" height="139" alt="img10" src="https://github.com/user-attachments/assets/7ea97389-3bbc-4aa1-995b-0c8dc01308e8" />
+
+
 Agora, acesse no navegador:  
 👉 [http://localhost:8081](http://localhost:8081)
 
 Seu tudo ocorreu bem, aqui será possível visualizar o app
+
+
+<img width="1364" height="683" alt="img11" src="https://github.com/user-attachments/assets/8f3133fd-7fed-48c2-b9a6-329aee726d27" />
 
 
 ---
@@ -207,6 +239,10 @@ Seu tudo ocorreu bem, aqui será possível visualizar o app
 ### Deixe o repositório privado
 Acesse:
 `GitHub → Settings → General → Danger Zone → Change repository visibility → Private`
+<img width="1333" height="205" alt="img1" src="https://github.com/user-attachments/assets/19a923b7-01b8-4c7e-a21b-54455ab1cfd0" />
+
+
+<img width="873" height="183" alt="img2" src="https://github.com/user-attachments/assets/413a1619-f5f6-456f-b45d-1d0e220412c8" />
 
 ---
 
@@ -223,13 +259,24 @@ Dê um nome para o token (exemplo: `argo-access`) e marque as permissões:
 Depois clique em **Generate token**  
 Copie o token gerado (exemplo: `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) — guarde com segurança.
 
+
+<img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/df154687-ea48-4e19-9926-674ab3ca4ce7" />
+
+
 ---
 
 ### 3️⃣ Configure o repositório no Argo CD
 
 1. Acesse o painel do **Argo CD**  
 2. Vá no menu lateral → **Settings ⚙️ → Repositories**
+
+<img width="1342" height="324" alt="img3" src="https://github.com/user-attachments/assets/bcc60635-8fcd-4a1c-8e24-ea09ed434f81" />
+
 3. Clique em **“+ CONNECT REPO”**
+
+
+<img width="1341" height="250" alt="img4" src="https://github.com/user-attachments/assets/04642d17-6a32-4747-b5b1-4cdcdfba3a45" />
+
 4. Escolha **HTTPS**
 5. Preencha:
 
@@ -239,6 +286,14 @@ Copie o token gerado (exemplo: `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) — g
 | **Username** | seu nome de usuário do GitHub |
 | **Password** | o token gerado (PAT) |
 
+<img width="1029" height="597" alt="img5" src="https://github.com/user-attachments/assets/a91b9dbd-ef80-498d-b286-f707e1ba6181" />
+
+<img width="963" height="321" alt="img6" src="https://github.com/user-attachments/assets/12b5dea0-9002-4f99-af4f-58a5b16f7b4d" />
+
+
 6. Clique em **CONNECT**
+
+<img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
+
 
 7. Espere sincronizar 
