@@ -49,7 +49,7 @@ Você o utilizará para ter acesso total aos arquivos e poder modificá-los sem 
 
 👉 https://github.com/GoogleCloudPlatform/microservices-demo
 
-<img width="1232" height="307" alt="img3" src="https://github.com/user-attachments/assets/c0ebaccd-7cac-4cb0-8be3-44e1e8c04537" />
+<img width="1232" height="407" alt="img3" src="https://github.com/user-attachments/assets/c0ebaccd-7cac-4cb0-8be3-44e1e8c04537" />
 
 Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o manifesto.
 
@@ -57,7 +57,7 @@ Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua bas
 
 Crie um **novo repositório público** na sua conta GitHub. Esse repositório armazenará apenas os manifestos que o ArgoCD sincronizará com o cluster local.
 
-<img width="935" height="148" alt="img4" src="https://github.com/user-attachments/assets/1db9cd2d-b104-41de-83d9-76513191c209" />
+<img width="935" height="248" alt="img4" src="https://github.com/user-attachments/assets/1db9cd2d-b104-41de-83d9-76513191c209" />
 
 ---
 
