@@ -26,7 +26,9 @@ Antes de começar, instale e configure:
 
 <img width="1365" height="717" alt="Image" src="https://github.com/user-attachments/assets/cafbd489-6021-4ecc-8433-a0664540b65a" />
 
-No terminal, execute:
+Essas configurações garantem que o Kubernetes esteja ativo e que o Rancher Desktop use o container runtime compatível com o ArgoCD.
+
+Verifique o contexto ativo do Kubernetes:
 
 ```bash
 kubectl config get-contexts
@@ -42,13 +44,18 @@ Saída esperada:
 
 ### 🍴 Fork do Repositório Base
 
+O fork é uma cópia independente de outro repositório, criada na sua conta GitHub.  
+Você o utilizará para ter acesso total aos arquivos e poder modificá-los sem alterar o original.
+
 👉 https://github.com/GoogleCloudPlatform/microservices-demo
 
 <img width="1326" height="574" alt="Image" src="https://github.com/user-attachments/assets/f5f69c8f-2272-42c0-9898-21eb43b4bad3" />
 
-### 🧱 Criação do seu Repositório
+Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o manifesto.
 
-Crie um repositório público na sua conta GitHub:
+### 🧱 Criação do seu Repositório GitOps
+
+Crie um **novo repositório público** na sua conta GitHub. Esse repositório armazenará apenas os manifestos que o ArgoCD sincronizará com o cluster local.
 
 <img width="946" height="527" alt="Image" src="https://github.com/user-attachments/assets/98fa7cd8-16db-42e7-8699-00450bed4727" />
 
@@ -56,29 +63,43 @@ Crie um repositório público na sua conta GitHub:
 
 ### 🖥 Configurar Repositório Local
 
-Configure o Git se necessário:
+Configure o Git (apenas na primeira vez):
 
 ```bash
 git config --global user.name "seu-nome-aqui"
 git config --global user.email "seu-email-aqui@gmail.com"
 ```
 
-Clone seu repositório e adicione o manifesto:
+Clone o repositório que você criou:
 
 ```bash
 cd ~/Documents
 git clone https://github.com/VitoriaAmelia/appgitops-projeto2
 cd appgitops-projeto2
+```
+
+Crie a estrutura de pastas e prepare o manifesto Kubernetes:
+
+```bash
 mkdir k8s
 cd k8s
+```
+
+Agora, baixe o arquivo `kubernetes-manifests.yaml` do seu fork e salve-o como `online-boutique.yaml`:
+
+```bash
+curl -L -o online-boutique.yaml https://raw.githubusercontent.com/VitoriaAmelia/microservices-demo/main/release/kubernetes-manifests.yaml
+```
+
+Abra o arquivo no Visual Studio Code (ou editor de sua preferência) para verificar o conteúdo:
+
+```bash
 code online-boutique.yaml
 ```
 
-Cole o conteúdo do YAML do fork ou baixe:
-
 <img width="1075" height="657" alt="Image" src="https://github.com/user-attachments/assets/45a3c74c-75b6-495e-a7df-694263ae02f3" />
 
-Comite e envie:
+Depois, volte ao terminal e faça commit e push:
 
 ```bash
 git add .
@@ -92,12 +113,14 @@ git push origin main
 
 ## 3️⃣ Instalar o ArgoCD no Cluster Local
 
+Crie o namespace e aplique o manifesto de instalação oficial:
+
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-Verificar pods:
+Verifique se os pods estão rodando corretamente:
 
 ```bash
 kubectl get pods -n argocd
@@ -109,7 +132,7 @@ kubectl get pods -n argocd
 
 ## 4️⃣ Acesso ao ArgoCD
 
-Mantenha este terminal:
+Deixe este terminal aberto para encaminhar a porta:
 
 ```bash
 kubectl -n argocd port-forward svc/argocd-server 8080:443
@@ -117,30 +140,29 @@ kubectl -n argocd port-forward svc/argocd-server 8080:443
 
 <img width="706" height="143" alt="img5" src="https://github.com/user-attachments/assets/80c73e68-6342-4699-b142-e99353e0e4a3" />
 
-Outro terminal:
-
-Obtenha senha admin:
+Abra outro terminal e recupere a senha de administrador:
 
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
 ```
 
-Decodifique:
+Decodifique a senha retornada:
 
 ```bash
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("Resposta_recebida_do_comando_anterior"))
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("senha_codificada_aqui"))
 ```
 
 <img width="718" height="135" alt="img6" src="https://github.com/user-attachments/assets/3c54e6d1-819a-4144-9acd-31d1d1897064" />
 
-Acesse: https://localhost:8080  
-Login: admin / senha obtida
+Agora, acesse: https://localhost:8080  
+Login: `admin`  
+Senha: *(a que você decodificou acima)*
 
 ---
 
-### 🛠 Criando App no ArgoCD
+### 🛠 Criando o Aplicativo no ArgoCD
 
-Configurar conforme tabela:
+Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 
 | Campo | Valor |
 |-------|--------|
@@ -148,7 +170,7 @@ Configurar conforme tabela:
 | Project | default |
 | Sync Policy | Automatic |
 | Opções | Prune, Self Heal, Auto-Finalizer, Auto-Create Namespace |
-| Repository URL | Seu repositório GitHub |
+| Repository URL | https://github.com/VitoriaAmelia/appgitops-projeto2 |
 | Revision | main |
 | Path | k8s |
 | Cluster URL | https://kubernetes.default.svc |
@@ -157,19 +179,21 @@ Configurar conforme tabela:
 <img width="1056" height="633" alt="img7-substituta" src="https://github.com/user-attachments/assets/7f6e40ec-d8ea-4083-85cc-e4702fdd8e7d" />
 <img width="1064" height="630" alt="img8" src="https://github.com/user-attachments/assets/18188a25-9154-4e79-9a84-408f460de67b" />
 
-#### Ajustando Health
+#### Ajustando o Estado Health
 
-1. Edite o serviço LoadBalancer → NodePort
+1. Edite o serviço `frontend` no YAML, mudando de **LoadBalancer** para **NodePort**.
 
 <img width="741" height="306" alt="img9 1" src="https://github.com/user-attachments/assets/b96bc1da-9b35-4b4f-bde5-488b460407f2" />
 
-2. Commit e sincronize
+2. Faça o commit da alteração e aguarde a sincronização automática.
 
 <img width="558" height="414" alt="img9-substitta" src="https://github.com/user-attachments/assets/d9676815-c9ea-49f7-800d-a45099f04939" />
 
 ---
 
 ## 5️⃣ Acessar o Frontend
+
+Encaminhe a porta do serviço `frontend` para acesso local:
 
 ```bash
 kubectl port-forward svc/frontend 8081:80
@@ -185,30 +209,32 @@ Acesse: http://localhost:8081
 
 ## 🔐 Conectando Repositório Privado ao ArgoCD
 
-### 1️⃣ Tornar privado
+### 1️⃣ Tornar o Repositório Privado
 
 <img width="1333" height="205" alt="img1" src="https://github.com/user-attachments/assets/19a923b7-01b8-4c7e-a21b-54455ab1cfd0" />
 <img width="873" height="183" alt="img2" src="https://github.com/user-attachments/assets/413a1619-f5f6-456f-b45d-1d0e220412c8" />
 
 ---
 
-### 2️⃣ Criar Personal Access Token
+### 2️⃣ Criar um Personal Access Token (PAT)
 
 <img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/df154687-ea48-4e19-9926-674ab3ca4ce7" />
 
 ---
 
-### 3️⃣ Conectar no ArgoCD
+### 3️⃣ Conectar Repositório Privado ao ArgoCD
+
+Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
 
 <img width="1342" height="324" alt="img3" src="https://github.com/user-attachments/assets/bcc60635-8fcd-4a1c-8e24-ea09ed434f81" />
 <img width="1341" height="250" alt="img4" src="https://github.com/user-attachments/assets/04642d17-6a32-4747-b5b1-4cdcdfba3a45" />
 
-Configurar:
+Preencha conforme abaixo:
 
 | Campo | Valor |
 |-------|-------|
-| Repository URL | https://github.com/seu-usuario/gitops-projeto.git |
-| Username | usuário GitHub |
+| Repository URL | https://github.com/VitoriaAmelia/appgitops-projeto2.git |
+| Username | seu usuário GitHub |
 | Password | token (PAT) |
 
 <img width="1029" height="597" alt="img5" src="https://github.com/user-attachments/assets/a91b9dbd-ef80-498d-b286-f707e1ba6181" />
