@@ -160,7 +160,7 @@ Faça commit e envie:
 
 ```bash
 git add .
-git commit -m "Adiciona manifesto do Online Boutique"
+git commit -m "Adiciona arquivo do Online Boutique"
 git push origin main
 ```
 
