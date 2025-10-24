@@ -241,13 +241,4 @@ Copie o token gerado (exemplo: `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) — g
 
 6. Clique em **CONNECT**
 
----
-
-### 4️⃣ Sincronize
-Após conectar, o Argo CD vai detectar o repositório.  
-Se quiser forçar a sincronização, clique em **SYNC** no app.
-
----
-
-> ⚠️ **Importante:** nunca compartilhe seu token (PAT) em texto público ou commit — ele dá acesso total aos seus repositórios privados.
-
+7. Espere sincronizar 
