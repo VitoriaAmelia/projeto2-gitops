@@ -330,8 +330,8 @@ Para isso, vá em Settings --> Danger Zone ---> Change visibility
 ㅤ
 Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token
 
-ㅤ
-<img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/df154687-ea48-4e19-9926-674ab3ca4ce7" />
+
+<img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/4401da79-977c-4316-a872-107a0eab49bf" />
 
 
 ---
