@@ -181,7 +181,7 @@ img do localizador
 
 img de mudado
 
-3 - Verifique a mudança:
+3 - Faça comit e verifique a mudança:
 
 img healthy
 
