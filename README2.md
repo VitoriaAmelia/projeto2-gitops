@@ -153,18 +153,19 @@ Saída esperada:
 ## 4️⃣ Acesso ao ArgoCD
 
 
-Deixe este terminal aberto para encaminhar a porta:
+1. Deixe este terminal aberto para encaminhar a porta:
 
 
 ```bash
 kubectl -n argocd port-forward svc/argocd-server 8080:443
 ```
 
+Saída esperada:
 
 <img width="706" height="143" alt="img5" src="https://github.com/user-attachments/assets/80c73e68-6342-4699-b142-e99353e0e4a3" />
 
 
-Abra outro terminal e adquira a senha de acesso:
+2. Abra outro terminal e adquira a senha de acesso:
 
 
 ```bash
@@ -172,18 +173,20 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 ```
 
 
-Decodifique a senha usando a saída do último comando (necessário para PowerShell):
+3. Decodifique a senha usando a saída do último comando (necessário para PowerShell):
 
 
 ```bash
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("saída_do_último_comando_aqui"))
 ```
 
+Saída esperada:
+
 
 <img width="718" height="135" alt="img6" src="https://github.com/user-attachments/assets/3c54e6d1-819a-4144-9acd-31d1d1897064" />
 
 
-Agora, acesse: https://localhost:8080  
+4. Agora, acesse: https://localhost:8080  
 
 
 Login: `admin`
@@ -235,27 +238,31 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 
 ## 5️⃣ Acessar o Frontend
 
-No Powershell, configure o port-forward para acesso ao frontend:
+1. No Powershell, configure o port-forward para acesso ao frontend:
 
 
 ```bash
 kubectl port-forward svc/frontend 8081:80
 ```
 
+Saída esperada:
 
 <img width="541" height="139" alt="img10" src="https://github.com/user-attachments/assets/7ea97389-3bbc-4aa1-995b-0c8dc01308e8" />
 
 
-Acesse: http://localhost:8081
+2. Acesse: http://localhost:8081 no seu navegador
+
+
+Saída esperada:
 
 
 <img width="1364" height="683" alt="img11" src="https://github.com/user-attachments/assets/8f3133fd-7fed-48c2-b9a6-329aee726d27" />
 
 ---
 
-## 🔐 Conectando Repositório Privado ao ArgoCD
+## 6️⃣ Conectando Repositório Privado ao ArgoCD
 
-### 1️⃣ Tornar o repositório utilizado nos últimos passos, que era público, privado.
+### 1. Tornar o repositório utilizado nos últimos passos, que era público, privado.
 
 
 Para isso, vá em Settings --> Danger Zone ---> Change visibility
@@ -268,7 +275,7 @@ Para isso, vá em Settings --> Danger Zone ---> Change visibility
 
 ---
 
-### 2️⃣ Criar um Token
+### 2. Criar um Token
 
 
 Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token
@@ -279,7 +286,7 @@ Para isso, vá em Settings → Developer settings → Personal access tokens →
 
 ---
 
-### 3️⃣ Conectar Repositório Privado ao ArgoCD
+### 3. Conectar Repositório Privado ao ArgoCD
 
 
 Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
