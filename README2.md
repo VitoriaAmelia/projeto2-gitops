@@ -10,6 +10,17 @@ Antes de começar, instale e configure:
 - ✅ Conta no [GitHub](https://github.com/)
 
 ---
+## 🎯 Objetivos do Projeto
+
+
+  Implantar a aplicação Online Boutique em um ambiente Kubernetes local (Rancher Desktop) utilizando o modelo GitOps com ArgoCD, garantindo o controle de versionamento e sincronização automática entre o repositório Git e o cluster.
+  O projeto tem como metas:
+  - Criar um repositório Git público contendo a estrutura de manifests YAML da aplicação.
+  - Realizar o deploy completo do ArgoCD.
+  - Configurar e criar o aplicativo no ArgoCD, apontando para o repositório Git.
+  - Sincronizar a aplicação e verificar que todos os pods estão em execução corretamente.
+  - Acessar o frontend da aplicação através do comando kubectl port-forward, validando o funcionamento da interface web
+---
 
 ## 📝 Como Utilizar
 
@@ -17,6 +28,7 @@ Antes de começar, instale e configure:
   - Realizar as configurações conforme descrito nas etapas 
 
 ---
+
 ## 🛠 Tecnologias Utilizadas
 
   - Kubernetes
