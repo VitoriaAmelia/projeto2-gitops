@@ -23,19 +23,16 @@ Antes de começar, instale e configure:
 
    - GitHub
    
-   - Fork do Repositório Base
+   - Instalar o ArgoCD
    
-   - Criação do Repositório GitOps
-   
-   - Configuração Local
-   
-   - Instalar o ArgoCD no Cluster Local
-   
-   - Acesso ao ArgoCD
+   - Acessar o ArgoCD
    
    - Acessar o Frontend
    
-   - Conectando Repositório Privado ao ArgoCD (opcional)   
+   - Conectar Repositório Privado ao ArgoCD (opcional)
+   
+   - Custumizar manifest
+   
 ---
 
 
@@ -178,7 +175,7 @@ Saída esperada:
 
 ---
 
-## 4️⃣ Acesso ao ArgoCD
+## 4️⃣ Acessar o ArgoCD
 
 
 1. Deixe este terminal aberto para encaminhar a porta:
@@ -288,7 +285,7 @@ Saída esperada:
 
 ---
 
-## 6️⃣ Conectando Repositório Privado ao ArgoCD (opcional)
+## 6️⃣ Conectar Repositório Privado ao ArgoCD (opcional)
 
 ### 1. Tornar o repositório utilizado nos últimos passos, que era público, privado.
 
