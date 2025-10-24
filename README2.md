@@ -11,6 +11,34 @@ Antes de começar, instale e configure:
 
 ---
 
+## 📝 Como Utilizar
+
+  - Seguir a ordem do documento para alcançar o objetivo passo a passo 
+  - Realizar as configurações conforme descrito nas etapas 
+
+---
+
+## 📚 Navegação
+   - Rancher Desktop
+
+   - GitHub
+   
+   - Fork do Repositório Base
+   
+   - Criação do Repositório GitOps
+   
+   - Configuração Local
+   
+   - Instalar o ArgoCD no Cluster Local
+   
+   - Acesso ao ArgoCD
+   
+   - Acessar o Frontend
+   
+   - Conectando Repositório Privado ao ArgoCD (opcional)   
+--
+
+
 ## 1️⃣ Rancher Desktop
 
 📥 Baixe o Rancher Desktop:  
