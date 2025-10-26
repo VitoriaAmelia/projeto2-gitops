@@ -90,7 +90,7 @@ git push origin main
 
 ---
 
-## 3️⃣ Instalar o ArgoCD no Cluster Local
+## 3️⃣ Instalar o ArgoCD 
 
 ```bash
 kubectl create namespace argocd
