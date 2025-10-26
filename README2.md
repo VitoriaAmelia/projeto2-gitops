@@ -145,7 +145,7 @@ O fork é uma cópia independente de outro repositório, criada na sua conta Git
 <img width="1232" height="407" alt="img3" src="https://github.com/user-attachments/assets/c0ebaccd-7cac-4cb0-8be3-44e1e8c04537" />
 
 
-Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base de onde buscará o arquivo YAML.
+Após criar o fork, ele aparecerá no seu perfil do GitHub. Essa será a sua base, de onde buscará o arquivo YAML.
 
 
 ### 🧱 Criação do seu Repositório GitOps
