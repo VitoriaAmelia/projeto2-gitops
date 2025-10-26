@@ -1,4 +1,4 @@
-<img width="1056" height="622" alt="image" src="https://github.com/user-attachments/assets/7a3f0ea5-9680-44eb-a26f-2de5e250c176" /># 🚀 Gitops na prática - Programa de Bolsas - DevSecOps 
+# 🚀 Gitops na prática - Programa de Bolsas - DevSecOps 
 
 
 ## 🎯 Objetivos do Projeto
