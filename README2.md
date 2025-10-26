@@ -449,7 +449,7 @@ Após realizar esses procedimentos: espere a sincronização, volte em Applicati
 
 Para o teste, vamos mudar o número de réplicas do deployment do frontend. Escalar o frontend pode ser importante para lidar com um maior volume de tráfego.
 
-Adicione a seguinte linha no seu arquivo YAMl para ajustar o número de réplicas para 3:
+Adicione a seguinte linha no seu arquivo YAML para ajustar o número de réplicas para 3:
 
 
 <img width="572" height="248" alt="custumizacao" src="https://github.com/user-attachments/assets/bd856e4f-630d-4252-94f6-d36e7d60625c" />
