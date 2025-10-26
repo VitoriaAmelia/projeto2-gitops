@@ -10,6 +10,7 @@
   - Configurar e criar o aplicativo no ArgoCD, apontando para o repositório Git.
   - Sincronizar a aplicação e verificar que todos os pods estão em execução corretamente.
   - Acessar o frontend da aplicação através do comando kubectl port-forward, validando o funcionamento da interface web
+    
 ---
 
 ## 🛠 Tecnologias Utilizadas
@@ -21,6 +22,17 @@
   - kubectl
   - containerd
   - YAML
+
+      
+---
+
+
+## 🖥️ Ambiente de desenvolvimento utilizado
+
+- Sistema operacional:  Windows 11 
+- Versão: Microsoft Windows 11 Pro 10.0.26100
+- Terminal: PoweShell
+
   
 ---
 
@@ -128,7 +140,7 @@ Crie um **novo repositório público** na sua conta GitHub. Esse repositório ar
 
 ### 🖥 Configurar Repositório Local
 
-Configure o Git se necessário:
+No terminal, configure o Git se necessário:
 
 
 ```bash
@@ -166,7 +178,7 @@ git push origin main
 ```
 
 
-Sua estrutura deve ser:
+Sua estrutura do repositório deve ser:
 
 
 <img width="342" height="249" alt="img3" src="https://github.com/user-attachments/assets/6b76caf5-d88d-415d-94ae-f88cb06c945f" />
@@ -244,6 +256,7 @@ Saída esperada:
 
    Senha: a que foi adquirida acima
 
+
 ---
 
 ### 🛠 Criando o Aplicativo no ArgoCD
@@ -257,18 +270,24 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 | Application Name | onlineboutique |
 | Project | default |
 | Sync Policy | Automatic |
-| Opções | Prune, Self Heal, Auto-Finalizer, Auto-Create Namespace |
+| Opções | Enable Auto-Sync, Prune Resources, Self Heal, Set Deletion Finalizer, Auto-Create Namespace |
 | Repository URL | Sua URL do repositório GitHub |
 | Revision | main |
 | Path | k8s |
 | Cluster URL | https://kubernetes.default.svc |
 | Namespace | default |
 
+Interface com as informações:
+
 
 <img width="843" height="632" alt="img5" src="https://github.com/user-attachments/assets/1fcc141a-fcfa-40cc-80c4-c068b1e32eaa" />
 
-
+ㅤ
 <img width="945" height="630" alt="img6" src="https://github.com/user-attachments/assets/64a976a6-9149-4742-bd9b-1a0f0ecc4de8" />
+ㅤ
+
+<img width="1019" height="306" alt="namespace" src="https://github.com/user-attachments/assets/ffb328ff-0e3d-4da7-b356-f3e0e68d76b4" />
+ㅤ
 
 
 #### Ajustando o Estado Health
@@ -282,6 +301,9 @@ Na interface do ArgoCD, clique em **"New App"** e preencha conforme a tabela:
 2. Faça o commit da alteração e aguarde a sincronização automática.
 
 
+O status deve indicar healthy como na imagem a seguir:
+
+ㅤ
 <img width="558" height="414" alt="img9-substitta" src="https://github.com/user-attachments/assets/d9676815-c9ea-49f7-800d-a45099f04939" />
 
 ---
@@ -307,16 +329,24 @@ Saída esperada:
 
 
 <img width="1364" height="683" alt="img11" src="https://github.com/user-attachments/assets/8f3133fd-7fed-48c2-b9a6-329aee726d27" />
+ㅤ
+
+Se tudo ocorreu bem, no navegador deve aparecer a tela desejada funcionando. 
 
 ---
 
 ## 6️⃣ Conectar Repositório Privado ao ArgoCD (opcional)
+
+Também é possível fazer esse processo com um repositório privado, será necessário apenas realizar alguns passos a mais. Nesse exemplo, o ponto de partida vai ser o repositório público já existente. 
+
 
 ### 1. Tornar o repositório utilizado nos últimos passos, que era público, privado.
 
 
 Para isso, vá em Settings --> Danger Zone ---> Change visibility
 
+
+Observe:
 
 <img width="1333" height="205" alt="img1" src="https://github.com/user-attachments/assets/19a923b7-01b8-4c7e-a21b-54455ab1cfd0" />
 
@@ -327,19 +357,27 @@ Para isso, vá em Settings --> Danger Zone ---> Change visibility
 
 ### 2. Criar um Token
 
-ㅤ
-Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token
+
+Para isso, vá em Settings → Developer settings → Personal access tokens → Generate new token (classic)
+
+
+Será necessário anotar o token adquirido.
+
+
+Observe o texto no bloco de cor verde na imagem:
 
 
 <img width="1335" height="637" alt="token" src="https://github.com/user-attachments/assets/4401da79-977c-4316-a872-107a0eab49bf" />
 
 
----
 
 ### 3. Conectar Repositório Privado ao ArgoCD
 
 
-Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
+Vá ao painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**.
+
+
+Observe:
 
 
 <img width="1342" height="324" alt="img3" src="https://github.com/user-attachments/assets/bcc60635-8fcd-4a1c-8e24-ea09ed434f81" />
@@ -350,16 +388,18 @@ Abra o painel do ArgoCD → **Settings → Repositories** → **+ CONNECT REPO**
 ㅤ
 
 
-Preencha conforme abaixo:
+Preencha os campos conforme abaixo:
 
 
 | Campo | Valor |
 |-------|-------|
-| Repository URL | https://github.com/VitoriaAmelia/appgitops-projeto2.git |
+| Repository URL | a url do seu repositório |
 | Username | seu usuário GitHub |
-| Password | token (PAT) |
+| Password | token adquirido |
 
-ㅤ
+
+Observe:
+
 
 <img width="1029" height="597" alt="img5" src="https://github.com/user-attachments/assets/a91b9dbd-ef80-498d-b286-f707e1ba6181" />
 ㅤ
@@ -369,7 +409,13 @@ Preencha conforme abaixo:
 ㅤ
 
 
+Confirme o Connection Status:
+
+
 <img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
+
+
+Após realizar esses procedimentos: espere a sincronização, volte em Applications no painél e também na interface da aplicação para verificar se a situação do projeto continua favorável.
 
 
 ---
@@ -384,11 +430,13 @@ Adicione a seguinte linha no seu arquivo YAMl para ajustar o número de réplica
 <img width="572" height="248" alt="custumizacao" src="https://github.com/user-attachments/assets/bd856e4f-630d-4252-94f6-d36e7d60625c" />
 
 
-Com o comando a seguir é possível ver o antes e depois da mudança:
+Com o comando a seguir, no PowerShell, é possível ver o antes e depois da mudança:
+
 
 ```bash
  kubectl get deployments
 ```
+
 
 Saída antes:
 
@@ -401,7 +449,10 @@ Saída depois:
 
 <img width="610" height="266" alt="custdepois" src="https://github.com/user-attachments/assets/83ed634f-44eb-41c6-b5f4-243b69603618" />
 
+
 É possível ajustar o número de réplicas de acordo com o desejado, não necessariamente precisa ser 3.
+
+Aguarde um momento para que haja a sincronização automática e verifique o estado do projeto no Argo CD. Se estiver healthy e for possível verificar a modificação com o comando anterior, o teste foi um sucesso!
 
 
 
