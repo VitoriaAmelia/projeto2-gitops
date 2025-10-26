@@ -58,10 +58,10 @@
 
 ## 🧩 Pré-requisitos
 
-Antes de começar, instale e configure:
+Vão ser necessários para o desenvolvimento:
 
 - ✅ [Rancher Desktop](https://rancherdesktop.io/) (mais sobre ao decorrer do documento)
-- ✅ [kubectl]
+- ✅ kubectl
 - ✅ [Git](https://git-scm.com/)
 - ✅ Conta no [GitHub](https://github.com/)
 
