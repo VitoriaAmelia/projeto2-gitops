@@ -303,10 +303,10 @@ Interface com as informações:
 <img width="843" height="632" alt="img5" src="https://github.com/user-attachments/assets/1fcc141a-fcfa-40cc-80c4-c068b1e32eaa" />
 
 ㅤ
-<img width="945" height="630" alt="img6" src="https://github.com/user-attachments/assets/64a976a6-9149-4742-bd9b-1a0f0ecc4de8" />
+<img width="845" height="530" alt="img6" src="https://github.com/user-attachments/assets/64a976a6-9149-4742-bd9b-1a0f0ecc4de8" />
 ㅤ
 
-<img width="1019" height="306" alt="namespace" src="https://github.com/user-attachments/assets/ffb328ff-0e3d-4da7-b356-f3e0e68d76b4" />
+<img width="919" height="206" alt="namespace" src="https://github.com/user-attachments/assets/ffb328ff-0e3d-4da7-b356-f3e0e68d76b4" />
 ㅤ
 
 
