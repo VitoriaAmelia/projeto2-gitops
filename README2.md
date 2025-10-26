@@ -370,3 +370,39 @@ Preencha conforme abaixo:
 
 
 <img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
+
+
+---
+
+### 3. Custumizar manifest
+
+Para o teste, vamos mudar o número de réplicas do deployment do frontend. Escalar o frontend pode ser importante para lidar com um maior volume de tráfego.
+
+Adicione a seguinte linha no seu arquivo YAMl para ajustar o número de réplicas para 3:
+
+
+<img width="572" height="248" alt="custumizacao" src="https://github.com/user-attachments/assets/bd856e4f-630d-4252-94f6-d36e7d60625c" />
+
+
+Com o comando a seguir é possível ver o antes e depois da mudança:
+
+```bash
+ kubectl get deployments
+```
+
+Saída antes:
+
+
+<img width="612" height="273" alt="custantes" src="https://github.com/user-attachments/assets/470c9ec7-ec53-413b-8c67-bb3326e9636f" />
+
+
+Saída depois:
+
+
+<img width="610" height="266" alt="custdepois" src="https://github.com/user-attachments/assets/83ed634f-44eb-41c6-b5f4-243b69603618" />
+
+É possível ajustar o número de réplicas de acordo com o desejado, não necessariamente precisa ser 3.
+
+
+
+
