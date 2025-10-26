@@ -61,7 +61,7 @@
 Antes de começar, instale e configure:
 
 - ✅ [Rancher Desktop](https://rancherdesktop.io/) (mais sobre ao decorrer do documento)
-- ✅ [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- ✅ [kubectl]
 - ✅ [Git](https://git-scm.com/)
 - ✅ Conta no [GitHub](https://github.com/)
 
