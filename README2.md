@@ -60,7 +60,7 @@
 
 Vão ser necessários para o desenvolvimento:
 
-- ✅ [Rancher Desktop](https://rancherdesktop.io/) (mais sobre ao decorrer do documento)
+- ✅ [Rancher Desktop](https://rancherdesktop.io/) (mais informações ao longo do documento)
 - ✅ kubectl
 - ✅ [Git](https://git-scm.com/)
 - ✅ Conta no [GitHub](https://github.com/)
@@ -88,7 +88,7 @@ Vão ser necessários para o desenvolvimento:
    
    - Conectar Repositório Privado ao ArgoCD (opcional)
    
-   - Custumizar manifest (opcional)
+   - Customizar manifest (opcional)
    
 ---
 
@@ -440,12 +440,12 @@ Confirme o Connection Status:
 <img width="1029" height="193" alt="img7" src="https://github.com/user-attachments/assets/61929422-41ff-424e-a640-642868dd8e3e" />
 
 
-Após realizar esses procedimentos: espere a sincronização, volte em Applications no painél e também na interface da aplicação para verificar se a situação do projeto continua favorável.
+Após realizar esses procedimentos: espere a sincronização, volte em Applications no painel e também na interface da aplicação para verificar se a situação do projeto continua favorável.
 
 
 ---
 
-### 7️⃣ Custumizar manifest (opcional)
+### 7️⃣ Customizar manifest (opcional)
 
 Para o teste, vamos mudar o número de réplicas do deployment do frontend. Escalar o frontend pode ser importante para lidar com um maior volume de tráfego.
 
