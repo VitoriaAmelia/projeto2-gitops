@@ -16,10 +16,14 @@
 ## 🛠 Tecnologias Utilizadas
 
   - Kubernetes
+    Server Version: v1.33.5+k3s1
   - Rancher Desktop
+    Version:1.20.0
   - ArgoCD
+    Version: v3.1.9+8665140
   - Git e GitHub
   - kubectl
+    Client Version: v1.34.1
   - containerd
   - YAML
 
