@@ -1,4 +1,4 @@
-# 🚀 Gitops na prática - Programa de Bolsas - DevSecOps 
+<img width="1056" height="622" alt="image" src="https://github.com/user-attachments/assets/7a3f0ea5-9680-44eb-a26f-2de5e250c176" /># 🚀 Gitops na prática - Programa de Bolsas - DevSecOps 
 
 
 ## 🎯 Objetivos do Projeto
@@ -265,16 +265,21 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 Saída esperada:
 
 
-<img width="718" height="135" alt="img6" src="https://github.com/user-attachments/assets/3c54e6d1-819a-4144-9acd-31d1d1897064" />
+<img width="718" height="135" alt="substituicao" src="https://github.com/user-attachments/assets/de582fe1-d253-420f-a904-e2669d87ff62" />
 
 
 4. Agora, acesse: https://localhost:8080  
-
 
    Login: `admin`
 
 
    Senha: a que foi adquirida acima
+
+
+Tela de acesso:
+
+
+   <img width="956" height="622" alt="telalogin" src="https://github.com/user-attachments/assets/2352ce49-8911-467c-aea4-9a3ee69a8f48" />
 
 
 ---
