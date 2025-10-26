@@ -34,7 +34,7 @@
 
     
   - Git e GitHub
-  - kubectl
+  - Kubectl
 
     
     - Client Version: v1.34.1
@@ -88,7 +88,7 @@ Antes de começar, instale e configure:
    
    - Conectar Repositório Privado ao ArgoCD (opcional)
    
-   - Custumizar manifest
+   - Custumizar manifest (opcional)
    
 ---
 
@@ -321,7 +321,7 @@ Interface com as informações:
 2. Faça o commit da alteração e aguarde a sincronização automática.
 
 
-O status deve indicar healthy como na imagem a seguir:
+O status deve indicar healthy como na imagem a seguir (é possível confirmar navegando no painel do ArgoCd, em Applications):
 
 ㅤ
 <img width="558" height="414" alt="img9-substitta" src="https://github.com/user-attachments/assets/d9676815-c9ea-49f7-800d-a45099f04939" />
@@ -440,7 +440,7 @@ Após realizar esses procedimentos: espere a sincronização, volte em Applicati
 
 ---
 
-### 3. Custumizar manifest
+### 3. Custumizar manifest (opcional)
 
 Para o teste, vamos mudar o número de réplicas do deployment do frontend. Escalar o frontend pode ser importante para lidar com um maior volume de tráfego.
 
