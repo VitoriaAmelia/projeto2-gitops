@@ -31,7 +31,7 @@
 
 - Sistema operacional:  Windows 11 
 - Versão: Microsoft Windows 11 Pro 10.0.26100
-- Terminal: PoweShell
+- Terminal: PowerShell
 
   
 ---
