@@ -440,7 +440,7 @@ Após realizar esses procedimentos: espere a sincronização, volte em Applicati
 
 ---
 
-### 3. Custumizar manifest (opcional)
+### 7️⃣ Custumizar manifest (opcional)
 
 Para o teste, vamos mudar o número de réplicas do deployment do frontend. Escalar o frontend pode ser importante para lidar com um maior volume de tráfego.
 
